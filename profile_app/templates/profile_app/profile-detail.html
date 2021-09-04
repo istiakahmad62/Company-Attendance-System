@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css_file %}
+    <link rel="stylesheet" href="{% static "profile_app/profile-detail.css" %}">
+    <link rel="stylesheet" href="{% static "base_app/login.css" %}">
+{% endblock %}
+
+{% block page_title %}
+    Profile
+{% endblock %}
+
+{% block content %}
+    <article class="profile-article">
+        <div class="title">
+            <h2>{{object.user.first_name}} {{object.user.last_name}}</h2>
+            <h5>{{object.designation}}</h5>
+        </div>
+        <div>
+            <img src="{% static "images/logo.jpg" %}" width="125" height="125" alt="">
+            <h6>Created on {{object.user.date_joined|date:"d-M-Y"}}</h6>
+        </div>
+    </article>
+
+    <main>
+        <div class="global-container">
+            <div class="card login-form">
+            <div class="card-body detail">
+                <h3 class="card-title text-center"><u>Details Of Employee</u></h3>
+                <div>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-info text-center">
+                            {{message}}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                </div>
+                <div class="card-text">
+                    <span id="field"> Username: </span> <span id="value">{{object.user.username}}</span> <br>
+                    <span id="field"> Name: </span> <span id="value">{{object.user.first_name|title}} {{object.user.last_name|title}}</span> <br>
+                    <span id="field"> Email: </span> <span id="value">{{object.user.email}}</span> <br>
+                    <span id="field"> Designation: </span> <span id="value">{{object.designation.position|title}}</span> <br>
+                    <span id="field"> Monthly Salary: </span> <span id="value">${{object.designation.salary}}</span> <br>
+                    <span id="field"> Current Salary: </span> <span id="value"> ${{curr_salary}} </span> <br>
+                    <span id="field"> Attendance Percentange: </span> <span id="value"> {{attendace_percent}}% </span> <br>
+                    <span id="field"> Date Of Birth: </span><br>
+                </div>
+                
+                {% if is_linkActive %}
+                    <a href="{% url "attendance-form" object.slug %}"><button type="button" class="btn btn-primary btn-block">Go To Attendance Form</button></a>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

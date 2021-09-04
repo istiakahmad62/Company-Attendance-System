@@ -1,0 +1,30 @@
+body {
+    background-image: url("../images/cover_1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container-fluid {
+    margin-left: 5rem;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.customImg {
+    border-radius: 20%;
+    transform: rotateZ(-10deg);
+}
+
+.customLink {
+    font-size: 1.15rem;
+    margin-right: 1rem;
+}
+
+.customLink:hover{
+    color: rgb(128, 0, 43);
+    font-weight: bold;
+}

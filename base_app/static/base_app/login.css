@@ -1,0 +1,47 @@
+html,body { 
+	height: 100%; 
+}
+
+.global-container{
+	height:100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-image: url("../../static/images/cover_1.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	/* background-color: #f5f5f5; */
+}
+
+form{
+	padding-top: 10px;
+	font-size: 14px;
+	margin-top: 30px;
+}
+
+.card-title{ font-weight:300; }
+
+.btn{
+    width: 100%;
+    max-width: 20rem;
+	font-size: 14px;
+	margin-top: 20px;
+}
+
+
+.login-form{ 
+	width:330px;
+	margin:20px;
+}
+
+.sign-up{
+	text-align:center;
+	padding: 20px 0 0;
+}
+
+.alert{
+	margin-bottom:-30px;
+	font-size: 13px;
+	margin-top:20px;
+}

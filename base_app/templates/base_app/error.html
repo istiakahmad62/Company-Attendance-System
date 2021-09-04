@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css_file %}
+    <link rel="stylesheet" href="{% static "base_app/login.css" %}">
+{% endblock %}
+
+{% block page_title %}
+    Error
+{% endblock %}
+
+{% block content %}
+ 
+<div class="global-container">
+	<div class="card login-form">
+	<div class="card-body">
+		<h3 class="card-title text-center">Error</h3>
+	</div>
+</div>
+
+{% endblock %}

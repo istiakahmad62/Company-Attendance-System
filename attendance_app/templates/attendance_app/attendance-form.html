@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css_file %}
+    <link rel="stylesheet" href="{% static "profile_app/profile-detail.css" %}">
+    <link rel="stylesheet" href="{% static "base_app/login.css" %}">
+{% endblock %}
+
+{% block page_title %}
+    Attendance Form
+{% endblock %}
+
+{% block content %}
+    <article class="profile-article">
+        <div class="title">
+            <h2>{{emp.user.first_name}} {{emp.user.last_name}}</h2>
+            <h5>{{emp.designation.position}}</h5>
+        </div>
+        <div>
+            <img src="{% static "images/logo.jpg" %}" width="125" height="125" alt="">
+            <h6>Created on {{emp.user.date_joined|date:"d-M-Y"}}</h6>
+        </div>
+    </article>
+
+    <main>
+        <div class="global-container">
+            <div class="card login-form">
+            <div class="card-body detail">
+                <h3 class="card-title text-center"><u>Attendance Form</u></h3>
+                <p class="card-title text-center">Date : {{date|date:"d-M-Y"}}</p>
+                <form method="post" class="text-center">
+                    {% csrf_token %}
+                    {% include "base_app/includes/include-form.html" %}
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+{% endblock %}

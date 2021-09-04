@@ -1,0 +1,25 @@
+.profile-article {
+    margin: 1rem 5rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: white;
+    background-color: rgb(16, 160, 52);
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px #aaaaaa;
+}
+
+.profile-article > .title {
+    margin: 2rem 1rem 0;
+}
+
+.profile-article > div > img {
+    border-radius: 5px;
+    transform: rotateZ(5deg);
+}
+
+#value {
+    float: right;
+}

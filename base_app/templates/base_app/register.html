@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css_file %}
+    <link rel="stylesheet" href="{% static "base_app/login.css" %}">
+{% endblock %}
+
+{% block page_title %}
+    Register
+{% endblock %}
+
+{% block content %}
+ 
+<div class="global-container">
+	<div class="card login-form">
+	<div class="card-body">
+		<h3 class="card-title text-center">Register in to Company</h3>
+		<div class="card-text">
+			{% if messages %}
+				{% for message in messages %}
+					<div class="alert alert-danger" role="alert">{{ message }}</div>
+				{% endfor %}
+			{% endif %}
+			
+			<form method="POST">
+				<!-- to error: add class "has-danger" -->
+                {% csrf_token %}
+
+				{% for form in forms %}
+                	{% include "./includes/include-form.html" %}
+				{% endfor %}
+				<button type="submit" class="btn btn-primary btn-block">Register</button>
+				
+				<div class="sign-up">
+					Already have an account? <a href="{% url "log-in" %}">Log In</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

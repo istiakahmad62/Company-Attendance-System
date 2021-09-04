@@ -1,0 +1,14 @@
+
+
+{% for field in form %}
+    <div class="form-group">
+        {{field.label_tag}}
+
+        {% if field.name == "login_password" %}
+            <a href="#" style="float:right;font-size:12px;">Forgot password?</a>
+        {% endif %}
+
+        {{field}}
+    </div>
+
+{% endfor %}
