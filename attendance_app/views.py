@@ -26,7 +26,6 @@ class AttendanceFormCreateView(CreateView):
         is_linkActive = False
         form.save()
 
-        print("attendance ", emp_obj.slug)
         return HttpResponseRedirect(reverse("profile-detail", kwargs={'slug' : emp_obj.slug}))
 
     def get_context_data(self, **kwargs):
