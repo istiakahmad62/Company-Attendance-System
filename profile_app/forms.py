@@ -14,13 +14,15 @@ class UserForm(forms.ModelForm):
             'last_name' : forms.TextInput(attrs={'class': 'form-control form-control-sm',}),
             'email' : forms.EmailInput(attrs={'class': 'form-control form-control-sm', 'aria-describedby' : "emailHelp"}),
             'password' : forms.PasswordInput(attrs={'class' : 'form-control form-control-sm', 'id' : 'exampleInputPassword1'}),
-
         }
 
 class EmployeeForm(forms.ModelForm):
     class Meta:
         model = Employee
-        fields = ["designation"]
+        fields = ["designation", "image"]
+        labels = {
+            "image" : "Upload Profile Picture"
+        }
         widgets = {
             'designation' : forms.Select(attrs={'class': 'form-control form-control-sm'}),
         }

@@ -17,7 +17,7 @@
             <h5>{{object.designation}}</h5>
         </div>
         <div>
-            <img src="{% static "images/logo.jpg" %}" width="125" height="125" alt="">
+            <img src="{{ object.image.url }}" width="125" height="125" alt="employee-image">
             <h6>Created on {{object.user.date_joined|date:"d-M-Y"}}</h6>
         </div>
     </article>
@@ -37,14 +37,14 @@
                 {% endif %}
                 </div>
                 <div class="card-text">
-                    <span id="field"> Username: </span> <span id="value">{{object.user.username}}</span> <br>
-                    <span id="field"> Name: </span> <span id="value">{{object.user.first_name|title}} {{object.user.last_name|title}}</span> <br>
-                    <span id="field"> Email: </span> <span id="value">{{object.user.email}}</span> <br>
-                    <span id="field"> Designation: </span> <span id="value">{{object.designation.position|title}}</span> <br>
-                    <span id="field"> Monthly Salary: </span> <span id="value">${{object.designation.salary}}</span> <br>
-                    <span id="field"> Current Salary: </span> <span id="value"> ${{curr_salary}} </span> <br>
-                    <span id="field"> Attendance Percentange: </span> <span id="value"> {{attendace_percent}}% </span> <br>
-                    <span id="field"> Date Of Birth: </span><br>
+                    <p> Username: <span id="value">{{object.user.username}}</span> </p>
+                    <p> Name: <span id="value">{{object.user.first_name|title}} {{object.user.last_name|title}}</span> </p>
+                    <p> Email: <span id="value">{{object.user.email}}</span> </p>
+                    <p> Designation: <span id="value">{{object.designation.position|title}}</span> </p>
+                    <p> Monthly Salary: <span id="value">${{object.designation.salary}}</span> </p>
+                    <p> Current Salary: <span id="value"> ${{curr_salary}} </span> </p>
+                    <p> Attendance Percentange: <span id="value"> {{attendace_percent}}% </span> </p>
+                    <p> Date Of Birth: </p>
                 </div>
                 
                 {% if is_linkActive %}

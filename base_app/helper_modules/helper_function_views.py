@@ -28,26 +28,29 @@ def postFunction(request):
     last_name = request.POST['last_name']
     password = request.POST['password']
     designation_id = request.POST['designation']
+    image_path = request.POST["image"]
+
+    print(image_path)
 
     # print(f"{username} designation {designation_id}")
     
     if User.objects.filter(Q(username=username) | Q(email=email)).first():
         messages.warning(request, "Username or Email is already taken!")
         return HttpResponseRedirect(reverse("register"))
-    
-    user_obj = User.objects.create(username=username, email=email, first_name=first_name, last_name=last_name)
-    user_obj.set_password(password)
-    user_obj.save()
+    else:
+        user_obj = User.objects.create(username=username, email=email, first_name=first_name, last_name=last_name)
+        user_obj.set_password(password)
+        user_obj.save()
+        
+        designation_obj = Designation.objects.get(id=int(designation_id))
 
-    designation_obj = Designation.objects.get(id=int(designation_id))
+        # print(designation_obj)
+        
+        auth_token = str(uuid.uuid4())[:5]
+        employee_obj = Employee(user=user_obj, auth_token=auth_token, designation=designation_obj, image="images/" + image_path)
+        employee_obj.save()
 
-    # print(designation_obj)
-    
-    auth_token = str(uuid.uuid4())[:5]
-    employee_obj = Employee(user=user_obj, auth_token=auth_token, designation=designation_obj)
-    employee_obj.save()
-
-    send_verification_mail(request, username, email, auth_token)
+        send_verification_mail(request, username, email, auth_token)
     
     return HttpResponseRedirect(reverse("token"))
 
