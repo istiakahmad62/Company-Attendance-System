@@ -3,15 +3,15 @@ import time
 from calendar import monthrange
 
 from attendance_app.forms import AttendanceForm
-from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView
 
 from .models import Employee
 
 is_linkActive = False
 
-# Create your views here.
-class ProfileDetailView(DetailView):
+class ProfileDetailView(LoginRequiredMixin, DetailView):
+    login_url = "log-in"
     model = Employee
     template_name = "profile_app/profile-detail.html"
 
@@ -48,8 +48,6 @@ class ProfileDetailView(DetailView):
             is_linkActive = True
 
         context['form'] = AttendanceForm
-        context['is_login'] = True
-        context['emp'] = emp_obj
         context['curr_salary'] = round(curr_salary, 2)
         context['attendace_percent'] = round(attendance_percentange, 2)
         context['is_linkActive'] = is_linkActive

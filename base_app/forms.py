@@ -3,9 +3,9 @@ from profile_app.forms import EmployeeForm, UserForm
 
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(
-        label = "Email Address", 
-        widget = forms.EmailInput(attrs={'class': 'form-control form-control-sm', 'id' : 'exampleInputEmail1', 'aria-describedby' : "emailHelp"})
+    username = forms.CharField(
+        label = "UserName",
+        widget = forms.TextInput(attrs={'class': 'form-control form-control-sm',})
     )
     login_password = forms.CharField(
         label = "Password",

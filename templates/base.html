@@ -16,20 +16,16 @@
 
     <nav class="navbar navbar-light" style="background-color: rgb(64, 11, 95);">
       <div class="container-fluid">
-        {% if is_login %}
-          <a class="navbar-brand" href=" {% url "profile-detail" emp.get_absolute_url %} ">
-            <img src="{% static "images/logo.jpg" %}" width="50" height="50" class="d-inline-block customImg">
-            <span class="title">Software Giant</span>
-          </a>
-        {% else %}
-          <a class="navbar-brand" href="{% url "home" %}">
-            <img src="{% static "images/logo.jpg" %}" alt="" width="50" height="50" class="d-inline-block customImg">
-            <span class="title">Software Giant</span>
-          </a>
-        {% endif %}
+        <a class="navbar-brand" href="{% url "home" %}">
+          <img src="{% static "images/logo.jpg" %}" alt="" width="50" height="50" class="d-inline-block customImg">
+          <span class="title">Software Giant</span>
+        </a>
 
         <ul class="nav justify-content-end">
-        {% if is_login %}
+        {% if user.is_authenticated and user.employee %}
+          <li class="nav-item">
+            <a class="nav-link customLink" href=" {% url "profile-detail" user.employee.get_absolute_url %} ">{{ user.first_name|title }} {{ user.last_name|title }}'s Profile</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link customLink" href="{% url "logout" %}">Logout</a>
           </li>
